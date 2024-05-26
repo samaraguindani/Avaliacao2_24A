@@ -1,27 +1,30 @@
 <?php
 require_once("../model/CRUD.php");
-class listarController{
 
+class listarController {
     private $lista;
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->lista = new CRUD();
         $this->criarTabela();
     }
 
-    private function criarTabela()
-    {
+    private function criarTabela() {
         $row = $this->lista->getPessoa();
         foreach ($row as $value) {
             echo "<tr>";
-                // echo "<th>" . $value['id'] . "</th>";
                 echo "<td>" . $value['nome'] . "</td>";
                 echo "<td>" . $value['idade'] . "</td>";
-                echo "<td>" . $value['cpf'] . "</td>";
+                echo "<td>" . $this->formatarCPF($value['cpf']) . "</td>";
                 echo "<td>" . (($value['ativo'] == "1") ? "<input type='checkbox' checked disabled>" : "<input type='checkbox' disabled>") . "</td>";
-                echo "<td><a class='btn__acao' href='Editar.php?id=" . $value['id'] . "'>Editar</a><a class='btn__acao' href='../controller/ControllerDeletar.php?id=" . $value['id'] . "'>Excluir</a></td>";
+                echo "<td><a class='btn__acao' href='Editar.php?id=" . $value['id'] . "'>Editar</a><a class='btn__acao' href='../controller/ControllerDeletar.php?id=" . $value['id'] . "'> | Excluir</a></td>";
             echo "</tr>";
         }
     }
+
+    private function formatarCPF($cpf) {
+        $cpf = preg_replace('/[^0-9]/', '', $cpf);
+        return preg_replace('/(\d{3})(\d{3})(\d{3})(\d{2})/', '\1.\2.\3-\4', $cpf);
+    }
 }
+?>

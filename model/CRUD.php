@@ -17,7 +17,7 @@ class CRUD {
        
         $stmt->bindValue(':nome', $nome, SQLITE3_TEXT);
         $stmt->bindValue(':cpf', $cpf, SQLITE3_TEXT);
-        $stmt->bindValue(':idade', $idade, SQLITE3_INTEGER);
+        $stmt->bindValue(':idade', $idade, SQLITE3_TEXT);
         $stmt->bindValue(':ativo', 1, SQLITE3_INTEGER);
 
         if ($stmt->execute() == TRUE) {

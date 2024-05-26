@@ -4,7 +4,10 @@
     <title>Cadastrar</title>
 
 <body>
-    <a href="../view/index.php" class="btn__acao">Voltar</a>
+    <nav class="nav__container">
+        <p class="nav__titulo">Cadastros</p>
+        <a href="../view/Cadastrar.php" class="btn__nav">Cadastrar</a>
+    </nav>
     
     <hr>
     
@@ -13,8 +16,8 @@
             <div class="form-group">
                 <input class="form-control" type="text" id="nome" name="nome" placeholder="Nome" required autofocus>
                 <input class="form-control" type="text" id="cpf" name="cpf" placeholder="CPF" required>
-                <input class="form-control" type="number" id="idade" name="idade" placeholder="Idade" required>
-                <input class="form-control" type="checkbox" id="ativo" name="ativo" required>
+                <input class="form-control" type="date" id="idade" name="idade" placeholder="Idade" required>
+                <input class="form-control" type="checkbox" id="ativo" name="ativo" checked>
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-success" id="cadastrar">Cadastrar</button>

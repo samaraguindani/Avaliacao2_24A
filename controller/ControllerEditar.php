@@ -20,11 +20,16 @@ class ControllerEditar {
         $this->nome = $row['nome'] ?? ' ';
         $this->cpf = $row['cpf'] ?? ' ';
         $this->idade = $row['idade'] ?? ' ';
-        $this->flag = $row['ativo'] ?? ' ';
+        $this->ativo = $row['ativo'] ?? 0;
     }
 
-    public function editarFormulario($id, $nome, $cpf, $idade, $flag) {
-        if ($this->editar->updatePessoa($id, $nome, $cpf, $idade, $flag) == TRUE) {
+    public function editarFormulario($id, $nome, $cpf, $idade, $ativo) {
+        if (!$this->validaCPF($cpf)) {
+            echo "<script>alert('CPF inválido!');history.back()</script>";
+            return;
+        }
+        
+        if ($this->editar->updatePessoa($id, $nome, $cpf, $idade, $ativo) == TRUE) {
             echo "<script>alert('Pessoa editada com sucesso!');document.location='../view/index.php'</script>";
         } else {
             echo "<script>alert('Erro ao editar!');history.back()</script>";
@@ -47,6 +52,29 @@ class ControllerEditar {
         return $this->ativo;
     }
 
+    function validaCPF($cpf) {
+        $cpf = preg_replace( '/[^0-9]/is', '', $cpf );
+        
+        if (strlen($cpf) != 11) {
+            return false;
+        }
+
+        if (preg_match('/(\d)\1{10}/', $cpf)) {
+            return false;
+        }
+
+        for ($t = 9; $t < 11; $t++) {
+            for ($d = 0, $c = 0; $c < $t; $c++) {
+                $d += $cpf[$c] * (($t + 1) - $c);
+            }
+            $d = ((10 * $d) % 11) % 10;
+            if ($cpf[$c] != $d) {
+                return false;
+            }
+        }
+        return true;
+    }
+
 }
 
 $id = filter_input(INPUT_GET, 'id');
@@ -54,3 +82,4 @@ $editar = new ControllerEditar($id);
 if (isset($_POST['submit'])) {
     $editar->editarFormulario($_POST['id'], $_POST['nome'], $_POST['cpf'], $_POST['idade'], $_POST['ativo']);
 }
+?>

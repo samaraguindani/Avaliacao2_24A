@@ -30,11 +30,16 @@ hr{
     margin: 10px;
 }
 
-.btn__cadastrar{
+.btn__nav{
     color: var(--roxo);
     font-family: var(--font-Archivo);
     font-size: 20px;
     margin: 10px;
+}
+
+.btn__acao:hover,
+.btn__nav:hover{
+    color: var(--roxo-claro);
 }
 
 .paragrafo{
@@ -53,16 +58,23 @@ table{
 th{
     text-transform: uppercase;
     font-weight: 600;
-}
-
-tr, th, td,
-.btn__acao{
     font-family: var(--font-Archivo);
     font-size: 16px;
+}
+
+tr, td{
+    font-family: var(--font-Archivo);
+    font-size: 13px;
+    text-transform: uppercase;
+
 }
 
 tr, th, td{
     border-bottom: 2px solid var(--roxo);
     padding: 10px;
     text-align: left;
+}
+
+.btn__acao{
+    color: var(--roxo);
 }

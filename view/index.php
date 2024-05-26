@@ -6,7 +6,7 @@
 <body>
     <nav class="nav__container">
         <p class="nav__titulo">Cadastros</p>
-        <a href="../view/Cadastrar.php" class="btn__cadastrar">Cadastrar</a>
+        <a href="../view/Cadastrar.php" class="btn__nav">Cadastrar</a>
     </nav>
     
     <hr>
