@@ -5,9 +5,9 @@
 
 <body>
     <?php require_once("../controller/ControllerEditar.php");?>
-    <hr>
-    <a href="../view/index.php" class="btn btn-default">Inicio</a>
-    <a href="../view/Cadastrar.php" class="btn btn-success">Cadastrar</a>
+
+    <a href="../view/index.php" class="btn__acao">Inicio</a>
+    <a href="../view/Cadastrar.php" class="btn__acao">Cadastrar</a>
     <hr>
     <div class="row">
         <form method="post" action="../controller/ControllerEditar.php" id="form" name="form" return false;" class="col-10">

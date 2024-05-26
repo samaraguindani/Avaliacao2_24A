@@ -4,10 +4,10 @@
     <title>Cadastrar</title>
 
 <body>
+    <a href="../view/index.php" class="btn__acao">Voltar</a>
+    
     <hr>
-    <a href="../view/index.php" class="btn btn-default">Inicio</a>
-    <a href="../view/Cadastrar.php" class="btn btn-success">Cadastrar</a>
-    <hr>
+    
     <div class="row">
         <form method="post" action="../controller/ControllerCadastrar.php" id="form" name="form" class="col-10">
             <div class="form-group">
@@ -21,8 +21,6 @@
             </div>
         </form>
     </div>
-
-    
 </body>
 
 </html>

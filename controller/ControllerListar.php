@@ -15,7 +15,8 @@ class listarController{
         $row = $this->lista->getPessoa();
         foreach ($row as $value) {
             echo "<tr>";
-                echo "<th>" . $value['nome'] . "</th>";
+                // echo "<th>" . $value['id'] . "</th>";
+                echo "<td>" . $value['nome'] . "</td>";
                 echo "<td>" . $value['idade'] . "</td>";
                 echo "<td>" . $value['cpf'] . "</td>";
                 echo "<td>" . (($value['ativo'] == "1") ? "<input type='checkbox' checked disabled>" : "<input type='checkbox' disabled>") . "</td>";
