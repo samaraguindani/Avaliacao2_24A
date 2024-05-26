@@ -1,20 +1,21 @@
 <?php require_once("../controller/ControllerListar.php");?>
 <!DOCTYPE html>
-<html lang="pt-br">
-
-<?php include("../view/head.php"); ?>
+    <html lang="pt-br">
+    <?php include("../view/Head.php"); ?>
 
 <body>
-   <?php include("../view/menu.php"); ?>
+    <hr>
+    <a href="../view/index.php" class="btn btn-default">Inicio</a>
+    <a href="../view/Cadastrar.php" class="btn btn-success">Cadastrar</a>
+    <hr>
    <table class="table">
         <thead>
             <tr>
                 <th>Nome</th>
-                <th>Sobrenome</th>
                 <th>Idade</th>
                 <th>CPF</th>
-                 <th>Flag</th>
-                <th>Opções</th>
+                <th>Ativo</th>
+                <th>Ações</th>
             </tr>
         </thead>
         <tbody>

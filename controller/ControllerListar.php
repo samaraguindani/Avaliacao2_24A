@@ -1,13 +1,12 @@
 <?php
-require_once("../model/Banco.php");
-class listarController
-{
+require_once("../model/CRUD.php");
+class listarController{
 
     private $lista;
 
     public function __construct()
     {
-        $this->lista = new Banco();
+        $this->lista = new CRUD();
         $this->criarTabela();
     }
 
@@ -16,12 +15,11 @@ class listarController
         $row = $this->lista->getPessoa();
         foreach ($row as $value) {
             echo "<tr>";
-            echo "<th>" . $value['nome'] . "</th>";
-            echo "<td>" . $value['sobrenome'] . "</td>";
-            echo "<td>" . $value['idade'] . "</td>";
-            echo "<td>" . $value['cpf'] . "</td>";
-            echo "<td>" . $value['flag'] = ($value['flag'] == "0") ? "Desativado" : "Ativado" . "</td>";
-            echo "<td><a class='btn btn-warning' href='editar.php?id=" . $value['nome'] . "'>Editar</a><a class='btn btn-danger' href='../controller/ControllerDeletar.php?id=" . $value['nome'] . "'>Excluir</a></td>";
+                echo "<th>" . $value['nome'] . "</th>";
+                echo "<td>" . $value['idade'] . "</td>";
+                echo "<td>" . $value['cpf'] . "</td>";
+                echo "<td>" . (($value['ativo'] == "1") ? "<input type='checkbox' checked disabled>" : "<input type='checkbox' disabled>") . "</td>";
+                echo "<td><a class='btn__acao' href='Editar.php?id=" . $value['id'] . "'>Editar</a><a class='btn__acao' href='../controller/ControllerDeletar.php?id=" . $value['id'] . "'>Excluir</a></td>";
             echo "</tr>";
         }
     }

@@ -1,44 +1,38 @@
 <?php
 
-require_once("../model/banco.php");
+require_once("../model/CRUD.php");
 
-class editarController {
+class ControllerEditar {
 
     private $editar;
     private $nome;
-    private $sobrenome;
     private $cpf;
     private $idade;
-    private $flag;
+    private $ativo;
 
     public function __construct($id) {
-        $this->editar = new Banco();
+        $this->editar = new CRUD();
         $this->criarFormulario($id);
     }
 
     private function criarFormulario($id) {
         $row = $this->editar->pesquisaPessoa($id);
         $this->nome = $row['nome'] ?? ' ';
-        $this->sobrenome = $row['sobrenome'] ?? ' ';
         $this->cpf = $row['cpf'] ?? ' ';
         $this->idade = $row['idade'] ?? ' ';
-        $this->flag = $row['flag'] ?? ' ';
+        $this->flag = $row['ativo'] ?? ' ';
     }
 
-    public function editarFormulario($nome, $sobrenome, $cpf, $idade, $flag, $id) {
-        if ($this->editar->updatePessoa($nome, $sobrenome, $cpf, $idade,$flag, $id) == TRUE) {
-            echo "<script>alert('Registro incluído com sucesso!');document.location='../view/index.php'</script>";
+    public function editarFormulario($id, $nome, $cpf, $idade, $flag) {
+        if ($this->editar->updatePessoa($id, $nome, $cpf, $idade, $flag) == TRUE) {
+            echo "<script>alert('Pessoa editada com sucesso!');document.location='../view/index.php'</script>";
         } else {
-            echo "<script>alert('Erro ao gravar registro!');history.back()</script>";
+            echo "<script>alert('Erro ao editar!');history.back()</script>";
         }
     }
 
     public function getNome() {
         return $this->nome;
-    }
-
-    public function getSobrenome() {
-        return $this->sobrenome;
     }
 
     public function getCpf() {
@@ -49,14 +43,14 @@ class editarController {
         return $this->idade;
     }
 
-    public function getFlag() {
-        return $this->flag;
+    public function getAtivo() {
+        return $this->ativo;
     }
 
 }
 
 $id = filter_input(INPUT_GET, 'id');
-$editar = new editarController($id);
+$editar = new ControllerEditar($id);
 if (isset($_POST['submit'])) {
-    $editar->editarFormulario($_POST['nome'], $_POST['sobrenome'], $_POST['cpf'], $_POST['idade'], $_POST['flag'], $_POST['id']);
+    $editar->editarFormulario($_POST['id'], $_POST['nome'], $_POST['cpf'], $_POST['idade'], $_POST['ativo']);
 }

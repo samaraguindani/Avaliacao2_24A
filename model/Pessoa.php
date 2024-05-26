@@ -1,61 +1,49 @@
 <?php
 
-require_once("../model/Banco.php");
+require_once("../model/CRUD.php");
 
-class Pessoa extends Banco {
+class Pessoa extends CRUD {
 
     private $nome;
-    private $sobrenome;
     private $cpf;
     private $idade;
-    private $flag;
+    private $ativo;
 
-//Metodos Set
-    public function setNome($string) {
-        $this->nome = $string;
-    }
-
-    public function setSobrenome($string) {
-        $this->sobrenome = $string;
-    }
-
-    public function setIdade($string) {
-        $this->idade = $string;
-    }
-
-    public function setCpf($string) {
-        $this->cpf = $string;
-    }
-
-    public function setFlag($string) {
-        $this->flag = $string;
-    }
-
-//Metodos Get
     public function getNome() {
         return $this->nome;
     }
 
-    public function getSobrenome() {
-        return $this->sobrenome;
-    }
-
-    public function getIdade() {
-        return $this->idade;
+    public function setNome($nome) {
+        $this->nome = $nome;
     }
 
     public function getCpf() {
         return $this->cpf;
     }
 
-    public function getFlag() {
-        return $this->flag;
+    public function setCpf($cpf) {
+        $this->cpf = $cpf;
+    }
+
+    public function getIdade() {
+        return $this->idade;
+    }
+
+    public function setIdade($idade) {
+        $this->idade = $idade;
+    }
+
+    public function isAtivo() {
+        return $this->ativo;
+    }
+
+    public function setAtivo($ativo) {
+        $this->ativo = $ativo;
     }
 
     public function incluir() {
-        return $this->setPessoa($this->getNome(), $this->getSobrenome(), $this->getCpf(), $this->getIdade());
+        return $this->setPessoa($this->getNome(), $this->getCpf(), $this->getIdade(), $this->isAtivo());
     }
-
 }
 
 ?>

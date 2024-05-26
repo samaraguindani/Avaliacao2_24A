@@ -1,6 +1,7 @@
 <?php
 require_once("../model/Pessoa.php");
-class cadastroController{
+
+class ControllerCadastrar{
 
     private $cadastro;
 
@@ -11,15 +12,16 @@ class cadastroController{
 
     private function incluir(){
         $this->cadastro->setNome($_POST['nome']);
-        $this->cadastro->setSobrenome($_POST['sobrenome']);
         $this->cadastro->setIdade($_POST['idade']);
         $this->cadastro->setCpf($_POST['cpf']);
+        $this->cadastro->isAtivo($_POST['ativo']);
         $result = $this->cadastro->incluir();
         if($result >= 1){
-            echo "<script>alert('Registro incluído com sucesso!');document.location='../view/cadastro.php'</script>";
+            echo "<script>alert('Pessoa cadastrada com sucesso!');document.location='../view/Cadastrar.php'</script>";
         }else{
-            echo "<script>alert('Erro ao gravar registro!, verifique se a pessoa não está duplicada');history.back()</script>";
+            echo "<script>alert('Erro ao cadastrar pessoa!');history.back()</script>";
         }
     }
 }
-new cadastroController();
+
+new ControllerCadastrar();
