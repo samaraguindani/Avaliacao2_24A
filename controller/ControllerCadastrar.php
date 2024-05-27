@@ -12,7 +12,7 @@ class ControllerCadastrar{
 
     private function incluir(){
         $nome = $_POST['nome'];
-        $idade = $_POST['idade'];
+        $idade = $_POST['idade']; 
         $cpf = $_POST['cpf'];
         $ativo = isset($_POST['ativo']) ? $_POST['ativo'] : 0;
 
@@ -21,10 +21,15 @@ class ControllerCadastrar{
             return; 
         }
 
+        if (!$this->validaIdade($idade)) {
+            echo "<script>alert('A idade deve ser maior que 14 anos!');history.back()</script>";
+            return; 
+        }
+
         $this->cadastro->setNome($nome);
         $this->cadastro->setIdade($idade);
         $this->cadastro->setCpf($cpf);
-        $this->cadastro->isAtivo($ativo);
+        $this->cadastro->setAtivo($ativo);
         $result = $this->cadastro->incluir();
         if ($result >= 1) {
             echo "<script>alert('Pessoa cadastrada com sucesso!');document.location='../view/Cadastrar.php'</script>";
@@ -54,6 +59,14 @@ class ControllerCadastrar{
             }
         }
         return true;
+    }
+
+    function validaIdade($dataNascimento) {
+        $dataNascimento = new DateTime($dataNascimento);
+        $dataAtual = new DateTime();
+        $idade = $dataAtual->diff($dataNascimento)->y;
+
+        return $idade >= 14;
     }
 }
 

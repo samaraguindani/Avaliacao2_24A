@@ -78,3 +78,15 @@ tr, th, td{
 .btn__acao{
     color: var(--roxo);
 }
+
+.form__container{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin-left: 10px;
+}
+
+.form__btn{
+    margin-left: 10px;
+
+}

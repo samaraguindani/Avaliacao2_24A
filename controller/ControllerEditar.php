@@ -20,13 +20,18 @@ class ControllerEditar {
         $this->nome = $row['nome'] ?? ' ';
         $this->cpf = $row['cpf'] ?? ' ';
         $this->idade = $row['idade'] ?? ' ';
-        $this->ativo = $row['ativo'] ?? 0;
+        $this->ativo = $row['ativo'] == 1 ? 1 : 0;
     }
 
     public function editarFormulario($id, $nome, $cpf, $idade, $ativo) {
         if (!$this->validaCPF($cpf)) {
             echo "<script>alert('CPF inválido!');history.back()</script>";
             return;
+        }
+
+        if (!$this->validaIdade($idade)) {
+            echo "<script>alert('A idade deve ser maior que 14 anos!');history.back()</script>";
+            return; 
         }
         
         if ($this->editar->updatePessoa($id, $nome, $cpf, $idade, $ativo) == TRUE) {
@@ -73,6 +78,14 @@ class ControllerEditar {
             }
         }
         return true;
+    }
+
+    function validaIdade($dataNascimento) {
+        $dataNascimento = new DateTime($dataNascimento);
+        $dataAtual = new DateTime();
+        $idade = $dataAtual->diff($dataNascimento)->y;
+
+        return $idade >= 14;
     }
 
 }

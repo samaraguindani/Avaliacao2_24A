@@ -51,11 +51,14 @@ class CRUD {
 
     public function updatePessoa($id, $nome, $cpf, $idade, $ativo) {
         $stmt = $this->sqlite->prepare("UPDATE `Pessoa` SET `nome` = :nome, `idade`=:idade, `cpf`=:cpf,`ativo`=:ativo  WHERE `id` = :id");
+        print('aqui crud');
+        
         $stmt->bindValue(':id', $id, SQLITE3_TEXT);
         $stmt->bindValue(':nome', $nome, SQLITE3_TEXT);
         $stmt->bindValue(':cpf', $cpf, SQLITE3_TEXT);
-        $stmt->bindValue(':idade', $idade, SQLITE3_INTEGER);
-        $stmt->bindValue(':flag', $ativo, SQLITE3_INTEGER);
+        $stmt->bindValue(':idade', $idade, SQLITE3_TEXT);
+        $stmt->bindValue(':ativo', $ativo, SQLITE3_INTEGER);
+        print('aqui crud');
         if ($stmt->execute() == TRUE) {
             return true;
         } else {
