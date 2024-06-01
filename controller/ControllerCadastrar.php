@@ -14,7 +14,7 @@ class ControllerCadastrar{
         $nome = $_POST['nome'];
         $idade = $_POST['idade']; 
         $cpf = $_POST['cpf'];
-        $ativo = isset($_POST['ativo']) ? $_POST['ativo'] : 0;
+        $ativo = isset($_POST['ativo']) ? 1 : 0;
 
         if (!$this->validaCPF($cpf)) {
             echo "<script>alert('CPF inválido!');history.back()</script>";

@@ -13,19 +13,23 @@
     
     <form method="post" action="../controller/ControllerCadastrar.php" id="form" name="form">
         <div class="form__container">
-            <label for="nome">Nome:</label>
-            <input class="form-control" type="text" id="nome" name="nome" placeholder="Nome" required autofocus>
+            <label for="nome" class="form__input">Nome:</label>
+            <input class="form__input" type="text" id="nome" name="nome" placeholder="Nome" required autofocus>
 
-            <label for="nome">CPF:</label>
-            <input class="form-control" type="text" id="cpf" name="cpf" placeholder="CPF" required>
+            <label for="nome" class="form__input">CPF:</label>
+            <input class="form__input" type="number" id="cpf" name="cpf" placeholder="CPF" required>
 
-            <label for="nome">Idade:</label>
-            <input class="form-control" type="date" id="idade" name="idade" placeholder="Idade" required>
+            <label for="nome" class="form__input">Idade:</label>
+            <input class="form__input" type="date" id="idade" name="idade" placeholder="Idade" required>
 
-            <input class="form-control" type="checkbox" id="ativo" name="ativo" checked>
+            <div class="div__ativo">
+                <label for="ativo" class="ativo__form">Ativo:</label>
+                <input class="check" type="checkbox" id="ativo" name="ativo" checked>
+            </div>
+
         </div>
         <div class="form__btn">
-            <button type="submit" class="btn btn-success" id="cadastrar">Cadastrar</button>
+            <button type="submit" class="btn__form" id="cadastrar">Cadastrar</button>
         </div>
     </form>
 </body>

@@ -88,5 +88,38 @@ tr, th, td{
 
 .form__btn{
     margin-left: 10px;
+}
 
+.div__ativo{
+    display: flex;
+    flex-direction: row;
+}
+
+.form__input{
+    margin-top: 10px;
+    font-family: var(--font-Archivo);
+    width: 50%;
+}
+
+.ativo__form{
+    margin-top: 10px;
+    font-family: var(--font-Archivo);
+}
+
+.check{
+    margin-top: 10px;
+}
+
+.btn__form{
+    font-family: var(--font-Archivo);
+    background-color: var(--roxo);
+    color: var(--branco);
+    border: 1px solid var(--roxo);
+    border-radius: 4px;
+    padding: 2px 5px;
+    margin-top: 10px;
+}
+
+.btn__form:hover{
+    background-color: var(--roxo-claro);
 }
