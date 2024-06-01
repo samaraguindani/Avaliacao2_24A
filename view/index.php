@@ -19,7 +19,6 @@
                 <th>Nome</th>
                 <th>Idade</th>
                 <th>CPF</th>
-                <th>Ativo1</th>
                 <th>Ativo</th>
                 <th>Ações</th>
             </tr>

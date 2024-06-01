@@ -20,16 +20,7 @@ class ControllerEditar {
         $this->nome = $row['nome'] ?? ' ';
         $this->cpf = $row['cpf'] ?? ' ';
         $this->idade = $row['idade'] ?? ' ';
-        $this->ativo = ( $row['ativo'] == "on" );
-
-        $myfile = fopen("C:\Users\samil\OneDrive\Documentos\log1.txt", "w+") or die("Unable to open file!");
-        fwrite($myfile, $id);
-        fwrite($myfile, $row['nome']);
-        fwrite($myfile, $row['cpf']);
-        fwrite($myfile, $row['idade']);
-        fwrite($myfile, $row['ativo']);
-        fclose($myfile);
-        
+        $this->ativo = ( $row['ativo'] == "1" || $row['ativo'] == "on" );
     }
 
     public function editarFormulario($id, $nome, $cpf, $idade, $ativo) {
@@ -105,19 +96,7 @@ class ControllerEditar {
 $id = filter_input(INPUT_GET, 'id');
 $editar = new ControllerEditar($id);
 
-$myfile = fopen("C:\Users\samil\OneDrive\Documentos\log1.txt", "a+") or die("Unable to open file!");
-fwrite($myfile, $id);
-fwrite($myfile, "isset(POST) ");
-fwrite($myfile, isset($_POST['submit']));
-
-
 if (isset($_POST['submit'])) {
-
-    fwrite($myfile,"ativo: " );
-    fwrite($myfile, $_POST['ativo']);
-    
-
     $editar->editarFormulario($_POST['id'], $_POST['nome'], $_POST['cpf'], $_POST['idade'], ( $_POST['ativo'] == 1 || $_POST['ativo'] == "on" ) );
 }
-fclose($myfile);
 ?>

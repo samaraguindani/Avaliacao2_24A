@@ -58,12 +58,6 @@ class CRUD {
         $stmt->bindValue(':idade', $idade, SQLITE3_TEXT);
         $stmt->bindValue(':ativo', $ativo, SQLITE3_INTEGER);
     
-        $myfile = fopen("C:\Users\samil\OneDrive\Documentos\log4.txt", "w+") or die("Unable to open file!");
-        fwrite($myfile, $ativo);
-        fwrite($myfile, "novo: ");
-        fwrite($myfile, $ativo == "on");
-        fclose($myfile);
-        
         if ($stmt->execute() == TRUE) {
             return true;
         } else {
